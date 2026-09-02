@@ -1,0 +1,42 @@
+# ────────────────
+# Python generelt
+# ────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.sqlite
+*.db
+
+# ────────────────
+# Virtuelle miljøer
+# ────────────────
+.venv/
+venv/
+.envrc
+.uv/
+
+# ────────────────
+# Projekt-specifikt
+# ────────────────
+.env
+.env.local
+*.log
+logs/
+.data/
+.cache/
+coverage/
+dist/
+build/
+*.egg-info/
+
+# Lokale Claude Code-indstillinger (delte indstillinger ligger i .claude/settings.json)
+.claude/settings.local.json
+
+# ────────────────
+# OS-specifikt
+# ────────────────
+.DS_Store
+Thumbs.db
+desktop.ini

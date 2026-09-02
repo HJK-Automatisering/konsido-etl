@@ -1,0 +1,25 @@
+# Tabeller, der kopieres fra kilden til den lokale database.
+#
+# Kopiér denne fil til `tables.toml` og udfyld med jeres egne tabelnavne.
+# Stien kan ændres med ETL_TABLES_FILE i .env.
+#
+# Kildeskema kommer fra AZURE_SYNAPSE_SOURCE_SCHEMA_DEFAULT og destinationsskema
+# fra LOCAL_DEST_SCHEMA_DEFAULT, medmindre en tabel selv angiver andet.
+#
+# Navne må indeholde bogstaver, cifre, understreg og bindestreg.
+
+[[table]]
+name = "dim_supplier"
+
+[[table]]
+name = "dim_invoice"
+
+[[table]]
+name = "fact_spend"
+
+# Eksempel på overrides for en enkelt tabel:
+#
+# [[table]]
+# name = "dim_date"
+# source_schema = "faelles"
+# dest_schema = "staging"

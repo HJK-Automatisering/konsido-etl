@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "konsido-etl"
+version = "0.1.0"
+description = "Daglig ETL fra Azure Synapse (serverless_interface_db) til lokal DB, med overskrivning."
+# Bevidst uden personlig e-mail: repoet er tænkt delt uden for kommunen.
+# Indsæt en funktionspostkasse her, hvis der skal stå en kontaktadresse.
+authors = [{ name = "Hjørring Kommune" }]
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+
+dependencies = [
+  "SQLAlchemy>=2.0.30,<3",
+  "pandas>=2.2.2,<3",
+  "pyodbc>=5.1.0,<6",
+  "python-dotenv>=1.0.1,<2",
+  "pydantic-settings>=2.3.4,<3",
+  # Ikke typer[all]: den extra findes ikke længere, og rich/shellingham
+  # følger med basispakken.
+  "typer>=0.12.3,<1",
+]
+
+[project.scripts]
+konsido-etl = "konsido_etl.cli:app"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E","F","I","UP","B","SIM","C90"]
+
+[tool.ruff.lint.mccabe]
+# C90 gør først noget, når der er sat en grænse
+max-complexity = 12
+
+[tool.ruff.lint.per-file-ignores]
+# Typer kræver funktionskald (typer.Option) i argument-defaults
+"src/konsido_etl/cli.py" = ["B008"]
+
+[tool.black]
+line-length = 100
+
+[dependency-groups]
+dev = [
+  "ruff>=0.4.8,<1",
+  "black>=24.4.2,<25",
+]
